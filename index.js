@@ -1,4 +1,5 @@
-var delay = setInterval(countDown, 1000);
+var delay;
+var active;
 
 function countDown() {
   var min = $("#min").html();
@@ -13,6 +14,22 @@ function countDown() {
   } else if (min > 0) {
     $("#sec").html(59);
     $("#min").html(min - 1);
-    delay;
   }
 }
+
+function startClock() {
+  if (active) {
+    active = false;
+    clearInterval(delay);
+    $("#min").html("25");
+    $("#sec").html("00");
+  } else {
+    active = true;
+    delay = setInterval(countDown, 1000);
+  }
+}
+
+$(document).ready(function() {
+  active = false;
+  $("#clock").on("click", startClock);
+});
