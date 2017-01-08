@@ -45,7 +45,7 @@ function settings(e) {
       }
       break;
     case "moreTime":
-      minLength = parseInt($("#minTime").html());
+      minLength = parseInt($("#minTime").html(), 10);
       $("#minTime").html(minLength + 1);
       $("#min").html(minLength + 1);
       $("#sec").html("00");
@@ -56,7 +56,7 @@ function settings(e) {
         $("#minBreak").html(minLength - 1);
       break;
     case "moreBreak":
-      minLength = parseInt($("#minBreak").html());
+      minLength = parseInt($("#minBreak").html(), 10);
       $("#minBreak").html(minLength + 1);
       break;
   }
