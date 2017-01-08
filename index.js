@@ -17,7 +17,7 @@ function countDown() {
   }
 }
 
-function startClock() {
+function toggleClock() {
   if (active) {
     active = false;
     clearInterval(delay);
@@ -29,7 +29,41 @@ function startClock() {
   }
 }
 
+function settings(e) {
+  if (active) {
+    toggleClock();
+  }
+
+  var minLength;
+  switch(e.target.id) {
+    case "lessTime":
+      minLength = $("#minTime").html();
+      if (minLength > 1) {
+        $("#minTime").html(minLength - 1);
+        $("#min").html(minLength - 1);
+        $("#sec").html("00");
+      }
+      break;
+    case "moreTime":
+      minLength = parseInt($("#minTime").html());
+      $("#minTime").html(minLength + 1);
+      $("#min").html(minLength + 1);
+      $("#sec").html("00");
+      break;
+    case "lessBreak":
+      minLength = $("#minBreak").html();
+      if (minLength > 1)
+        $("#minBreak").html(minLength - 1);
+      break;
+    case "moreBreak":
+      minLength = parseInt($("#minBreak").html());
+      $("#minBreak").html(minLength + 1);
+      break;
+  }
+}
+
 $(document).ready(function() {
   active = false;
-  $("#clock").on("click", startClock);
+  $("#clock").on("click", toggleClock);
+  $(".change").on("click", settings);
 });
