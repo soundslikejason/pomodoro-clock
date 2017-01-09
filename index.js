@@ -14,6 +14,14 @@ function countDown() {
   } else if (min > 0) {
     $("#sec").html(59);
     $("#min").html(min - 1);
+  } else {
+    if ($("#workText").html() === "Working") {
+      $("#workText").html("Break");
+      $("#min").html($("#minBreak").html());
+    } else {
+      $("#workText").html("Working");
+      $("#min").html($("#minWork").html());
+    }
   }
 }
 
@@ -21,7 +29,8 @@ function toggleClock() {
   if (active) {
     active = false;
     clearInterval(delay);
-    $("#min").html("25");
+    $("#workTextType").html("Working");
+    $("#min").html($("#minWork").html());
     $("#sec").html("00");
   } else {
     active = true;
@@ -36,17 +45,17 @@ function settings(e) {
 
   var minLength;
   switch(e.target.id) {
-    case "lessTime":
-      minLength = $("#minTime").html();
+    case "lessWork":
+      minLength = $("#minWork").html();
       if (minLength > 1) {
-        $("#minTime").html(minLength - 1);
+        $("#minWork").html(minLength - 1);
         $("#min").html(minLength - 1);
         $("#sec").html("00");
       }
       break;
-    case "moreTime":
-      minLength = parseInt($("#minTime").html(), 10);
-      $("#minTime").html(minLength + 1);
+    case "moreWork":
+      minLength = parseInt($("#minWork").html(), 10);
+      $("#minWork").html(minLength + 1);
       $("#min").html(minLength + 1);
       $("#sec").html("00");
       break;
