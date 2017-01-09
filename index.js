@@ -18,9 +18,11 @@ function countDown() {
     if ($("#workText").html() === "Working") {
       $("#workText").html("Break");
       $("#min").html($("#minBreak").html());
+      $("#clock").css("color", "red");
     } else {
       $("#workText").html("Working");
       $("#min").html($("#minWork").html());
+      $("#clock").css("color", "green");
     }
   }
 }
@@ -29,12 +31,15 @@ function toggleClock() {
   if (active) {
     active = false;
     clearInterval(delay);
-    $("#workTextType").html("Working");
+    $("#workText").html("Click");
     $("#min").html($("#minWork").html());
     $("#sec").html("00");
+    $("#clock").css("color", "inherit");
   } else {
     active = true;
     delay = setInterval(countDown, 1000);
+    $("#clock").css("color", "green");
+    $("#workText").html("Working");
   }
 }
 
@@ -42,7 +47,6 @@ function settings(e) {
   if (active) {
     toggleClock();
   }
-
   var minLength;
   switch(e.target.id) {
     case "lessWork":
