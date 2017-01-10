@@ -1,6 +1,7 @@
 #clock {
   cursor: pointer;
   border: 5px dashed;
+  margin-top: 20px;
 }
 
 .change {
