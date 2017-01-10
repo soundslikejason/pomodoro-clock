@@ -1,3 +1,9 @@
 #clock {
   cursor: pointer;
+  border: 5px dashed;
+}
+
+.change {
+  cursor: pointer;
+  padding: 10px;
 }

@@ -31,7 +31,7 @@ function toggleClock() {
   if (active) {
     active = false;
     clearInterval(delay);
-    $("#workText").html("Click");
+    $("#workText").html("Pomodoro");
     $("#min").html($("#minWork").html());
     $("#sec").html("00");
     $("#clock").css("color", "inherit");
